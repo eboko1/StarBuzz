@@ -21,9 +21,15 @@ public class DrinkActivity extends AppCompatActivity {
         int  drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
         Drink drink = Drink.drinks[drinkNo];
 
-        //add photo
+        //fill photo
         photo.setImageResource(drink.getImgResId());
       //  photo.setContentDescription(drink.getName());
+
+        //fill text name
+        name.setText(drink.getName());
+
+        //fill text  description
+        description.setText(drink.getDescription());
 
 
     }
