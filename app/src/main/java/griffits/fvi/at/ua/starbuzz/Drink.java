@@ -16,9 +16,9 @@ public class Drink {
     }
 
     public  static  final Drink[] drinks = {
-        new Drink("Latte", "A couple of espresso shots with streamed milk", R.drawable.ic_latte),
-        new Drink("Cappuccino","Espresso, hot milk, and a steamed milk foam", R.drawable.ic_cappuccino),
-        new Drink("Filter", "Highest quality beans roasted and brewed fresh", R.drawable.ic_filter)
+        new Drink("Latte", "A couple of espresso shots with streamed milk", R.mipmap.ic_latte),
+        new Drink("Cappuccino","Espresso, hot milk, and a steamed milk foam", R.mipmap.ic_cappuccino),
+        new Drink("Filter", "Highest quality beans roasted and brewed fresh", R.mipmap.ic_filter)
     };
 
     public void setName(String name) {
