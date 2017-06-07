@@ -4,16 +4,22 @@ package griffits.fvi.at.ua.starbuzz;
  * Created by Vika on 07.06.2017.
  */
 
-public class Drinks {
+public class Drink {
     private String  name;
     private String description;
     private int imgResId;
 
-    public Drinks(String name, String description, int imgResId) {
+    public Drink(String name, String description, int imgResId) {
         this.name = name;
         this.description = description;
         this.imgResId = imgResId;
     }
+
+    public  static  final Drink[] drinks = {
+        new Drink("Latte", "A couple of espresso shots with streamed milk",R.drawable.ic_latte),
+        new Drink("Cappuccino", "Espresso, hot milk, and a steamed milk foam",R.drawable.ic_cappuccino),
+        new Drink("Filter", "Highest quality beans roasted and brewed fresh",R.drawable.ic_filter)
+    };
 
     public void setName(String name) {
         this.name = name;
