@@ -1,10 +1,30 @@
 package griffits.fvi.at.ua.starbuzz;
 
-import android.app.Activity;
+import android.app.ListActivity;
 
-/**
- * Created by Vika on 07.06.2017.
- */
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class DrinkCategoryActivity extends Activity {
+public class DrinkCategoryActivity extends ListActivity{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ListView listDrinks = getListView();
+        ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(this, android.R.layout.simple_list_item_1, Drink.drinks);
+
+        listDrinks.setAdapter(listAdapter);
+
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        Intent i = new Intent(getApplicationContext(), DrinkActivity.class);
+        i.putExtra(DrinkActivity.EXTRA_DRINKNO, (int)id);
+        startActivity(i);
+    }
 }

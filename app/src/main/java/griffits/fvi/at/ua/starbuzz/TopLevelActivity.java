@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class TopLevelActivity extends AppCompatActivity {
 
@@ -23,7 +24,9 @@ public class TopLevelActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
              if(position == 0){
-                 startActivity( new Intent(getApplicationContext(), DrinkCategoryActivity.class));
+
+                startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
+                 //Toast.makeText(getApplication(),"ok Click", Toast.LENGTH_LONG).show();
              }
             }
         };
