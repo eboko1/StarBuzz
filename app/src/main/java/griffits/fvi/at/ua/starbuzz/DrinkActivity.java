@@ -17,13 +17,13 @@ public class DrinkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drink);
 
         init();
-
+        //Get the drink from the intent
         int  drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
         Drink drink = Drink.drinks[drinkNo];
 
-        //fill photo
+        //Populate the drink image
         photo.setImageResource(drink.getImgResId());
-      //  photo.setContentDescription(drink.getName());
+      // photo.setContentDescription(drink.getName());
 
         //fill text name
         name.setText(drink.getName());

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">StarBuzz</string>
-    <string name="title_activity_drink_category">title</string>
+    <string name="title_activity_drink_category">name</string>
 </resources>

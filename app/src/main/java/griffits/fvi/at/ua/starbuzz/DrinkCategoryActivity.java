@@ -10,21 +10,25 @@ import android.widget.ListView;
 
 public class DrinkCategoryActivity extends ListActivity{
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ListView listDrinks = getListView();
-        ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(this, android.R.layout.simple_list_item_1, Drink.drinks);
-
+        ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(this,
+                android.R.layout.simple_list_item_1,
+                Drink.drinks);
         listDrinks.setAdapter(listAdapter);
-
     }
 
     @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent i = new Intent(getApplicationContext(), DrinkActivity.class);
-        i.putExtra(DrinkActivity.EXTRA_DRINKNO, (int)id);
-        startActivity(i);
+    public void onListItemClick(ListView listView,
+                                View itemView,
+                                int position,
+                                long id) {
+        Intent intent = new Intent(DrinkCategoryActivity.this, DrinkActivity.class);
+        intent.putExtra(DrinkActivity.EXTRA_DRINKNO, (int) id);
+        startActivity(intent);
     }
 }

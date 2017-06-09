@@ -14,7 +14,7 @@ public class Drink {
         this.description = description;
         this.imgResId = imgResId;
     }
-
+    //drinks is an array of Drinks
     public  static  final Drink[] drinks = {
         new Drink("Latte", "A couple of espresso shots with streamed milk", R.mipmap.ic_latte),
         new Drink("Cappuccino","Espresso, hot milk, and a steamed milk foam", R.mipmap.ic_cappuccino),
@@ -43,5 +43,10 @@ public class Drink {
 
     public int getImgResId() {
         return imgResId;
+    }
+
+    //object.tosString()
+    public String toString(){
+        return this.name;
     }
 }
