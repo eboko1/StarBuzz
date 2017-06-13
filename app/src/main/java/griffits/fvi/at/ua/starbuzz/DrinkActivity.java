@@ -9,6 +9,7 @@ public class DrinkActivity extends AppCompatActivity {
 
      TextView name, description;
      ImageView photo;
+
     public static final String EXTRA_DRINKNO = "drinkNo" ;
 
     @Override

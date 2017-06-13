@@ -4,12 +4,18 @@ package griffits.fvi.at.ua.starbuzz;
  * Created by Vika on 09.06.2017.
  */
 
-public class Dessert extends Drink {
+public class Dessert {
+    private String name;
+    private String description;
+    private int idResImg;
 
-
-    public Dessert(String name, String description, int imgResId) {
-        super(name, description, imgResId);
+    public Dessert(String name, String description, int idResImg) {
+        this.name = name;
+        this.description = description;
+        this.idResImg = idResImg;
     }
+
+
     public  static  final Dessert[] desserts = {
             new Dessert("Tiramisu",
                     "Italian dessert from mascarpone cheese, cookies added as filler \"ladyfinger\" coffee and cocoa.",
@@ -21,4 +27,31 @@ public class Dessert extends Drink {
                     "Highest quality beans roasted and brewed fresh",
                     R.mipmap.ic_filter)
     };
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getIdResImg() {
+        return idResImg;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIdResImg(int idResImg) {
+        this.idResImg = idResImg;
+    }
+    public String toString(String name){
+        return this.name ;
+    }
 }
