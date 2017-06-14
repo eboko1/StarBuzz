@@ -43,12 +43,12 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
             insertDrink(db,"Latte", "A couple of espresso shots with streamed milk", R.mipmap.ic_latte);
             insertDrink(db,"Cappuccino","Espresso, hot milk, and a steamed milk foam", R.mipmap.ic_cappuccino);
             insertDrink(db,"Filter", "Highest quality beans roasted and brewed fresh", R.mipmap.ic_filter);
-        }
+        } 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            updateMyDatabase(db,oldVersion, newVersion);
     }
 
     private static void insertDrink(SQLiteDatabase db, String name, String description, int imageResId){
