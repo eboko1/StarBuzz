@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import griffits.fvi.at.ua.starbuzz.Menu.Drink;
+
 public class DrinkDescriptionActivity extends AppCompatActivity {
 
      TextView name, description;

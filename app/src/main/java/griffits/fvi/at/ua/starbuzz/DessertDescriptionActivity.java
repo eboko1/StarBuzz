@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import griffits.fvi.at.ua.starbuzz.Menu.Dessert;
+
 public class DessertDescriptionActivity extends AppCompatActivity {
 
     public static final String EXTRA_DESSERT = "dessert";
@@ -27,11 +29,6 @@ public class DessertDescriptionActivity extends AppCompatActivity {
         photoDessert.setImageResource(desserts.getIdResImg());
 
     }
-
-
-
-
-
 
 
     private void init(){

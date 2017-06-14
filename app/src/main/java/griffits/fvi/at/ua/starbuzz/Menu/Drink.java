@@ -1,4 +1,6 @@
-package griffits.fvi.at.ua.starbuzz;
+package griffits.fvi.at.ua.starbuzz.Menu;
+
+import griffits.fvi.at.ua.starbuzz.R;
 
 /**
  * Created by Vika on 07.06.2017.

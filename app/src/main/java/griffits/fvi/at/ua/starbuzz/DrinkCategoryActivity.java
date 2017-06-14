@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import griffits.fvi.at.ua.starbuzz.Menu.Drink;
+
 public class DrinkCategoryActivity extends ListActivity{
 
 
