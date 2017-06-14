@@ -1,5 +1,6 @@
 package griffits.fvi.at.ua.starbuzz.Menu;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,6 +41,9 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private static void insertDrinks(SQLiteDatabase db, String name, String description, int imageResId){
-
+        ContentValues drinkValues = new ContentValues();
+        drinkValues.put(COLUMN_NAME, name);
+        drinkValues.put(COLUMN_DESCRIPTION, description);
+        drinkValues.put(COLUMN_IMAGE_RES_ID, imageResId );
     }
 }
