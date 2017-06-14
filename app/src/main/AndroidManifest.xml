@@ -19,8 +19,13 @@
         <activity
             android:name=".DrinkCategoryActivity"
             android:label="@string/title_activity_drink_category" />
-        <activity android:name=".DrinkActivity" />
-        <activity android:name=".DessertDescriptionActivity"></activity>
+        <activity
+            android:name=".DessertCategoryActivity"
+            android:label="@string/title_activity_dessert_category" />
+
+        <activity android:name=".DrinkDescriptionActivity" />
+        <activity android:name=".DessertDescriptionActivity"/>
+
     </application>
 
 </manifest>

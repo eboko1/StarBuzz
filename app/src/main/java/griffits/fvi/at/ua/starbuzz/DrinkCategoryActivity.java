@@ -23,8 +23,8 @@ public class DrinkCategoryActivity extends ListActivity{
 
     @Override
     public void onListItemClick(ListView listView, View itemView, int position, long id) {
-        Intent intent = new Intent(DrinkCategoryActivity.this, DrinkActivity.class);
-        intent.putExtra(DrinkActivity.EXTRA_DRINKNO, (int) id);
+        Intent intent = new Intent(DrinkCategoryActivity.this, DrinkDescriptionActivity.class);
+        intent.putExtra(DrinkDescriptionActivity.EXTRA_DRINKNO, (int) id);
         startActivity(intent);
     }
 }

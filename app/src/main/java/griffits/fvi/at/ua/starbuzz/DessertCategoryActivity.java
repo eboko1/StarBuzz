@@ -17,16 +17,16 @@ public class DessertCategoryActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ListView listDrinks = getListView();
+        ListView listDessert = getListView();
 
-        ArrayAdapter<Dessert> listAdapter = new ArrayAdapter<Dessert>(this, android.R.layout.simple_list_item_1, Dessert.desserts);
-        listDrinks.setAdapter(listAdapter);
+       ArrayAdapter<Dessert> listAdapter = new ArrayAdapter<Dessert>(this, android.R.layout.simple_list_item_1, Dessert.desserts);
+       listDessert.setAdapter(listAdapter);
     }
 
     @Override
     public void onListItemClick(ListView listView, View itemView, int position, long id) {
-        Intent intent = new Intent(DessertCategoryActivity.this, DessertDescriptionActivity.class);
-        intent.putExtra(DessertDescriptionActivity.EXTRA_DESERT, (int) id);
-        startActivity(intent);
+       Intent intent = new Intent(getApplicationContext(), DessertDescriptionActivity.class);
+       intent.putExtra(DessertDescriptionActivity.EXTRA_DESSERT, (int) id);
+       startActivity(intent);
     }
 }

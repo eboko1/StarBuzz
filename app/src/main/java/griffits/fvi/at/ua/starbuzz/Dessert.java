@@ -51,7 +51,8 @@ public class Dessert {
     public void setIdResImg(int idResImg) {
         this.idResImg = idResImg;
     }
-    public String toString(String name){
+
+    public String toString(){
         return this.name ;
     }
 }

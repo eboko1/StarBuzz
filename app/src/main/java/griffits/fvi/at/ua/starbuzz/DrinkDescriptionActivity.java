@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DrinkActivity extends AppCompatActivity {
+public class DrinkDescriptionActivity extends AppCompatActivity {
 
      TextView name, description;
      ImageView photo;
@@ -15,7 +15,7 @@ public class DrinkActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drink);
+        setContentView(R.layout.activity_drink_descriotion);
 
         init();
         //Get the drink from the intent

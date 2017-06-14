@@ -24,9 +24,15 @@ public class TopLevelActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
              if(position == 0){
-
-                startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
-                 //Toast.makeText(getApplication(),"ok Click", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplication(),"Drinks", Toast.LENGTH_LONG).show();
+                 startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
+             } else if(position == 1){
+                 Toast.makeText(getApplication(),"Desserts ", Toast.LENGTH_LONG).show();
+                 startActivity(new Intent(getApplicationContext(), DessertCategoryActivity.class));
+             } else if(position == 2){
+                  Toast.makeText(getApplication(),"Foods ", Toast.LENGTH_LONG).show();
+             }else if(position == 3){
+                 Toast.makeText(getApplication(),"Stores ", Toast.LENGTH_LONG).show();
              }
             }
         };
