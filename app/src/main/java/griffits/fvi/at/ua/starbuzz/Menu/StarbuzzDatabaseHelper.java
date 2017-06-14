@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import griffits.fvi.at.ua.starbuzz.R;
+
 /**
  * Created by Vika on 14.06.2017.
  */
@@ -31,8 +33,17 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_DATABASE_DRINK);
+        updateMyDatabase(db, 0, DB_VERSION);
 
+    }
+    private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
+
+        if(oldVersion < 1){
+            db.execSQL(CREATE_DATABASE_DRINK);
+            insertDrink(db,"Latte", "A couple of espresso shots with streamed milk", R.mipmap.ic_latte);
+            insertDrink(db,"Cappuccino","Espresso, hot milk, and a steamed milk foam", R.mipmap.ic_cappuccino);
+            insertDrink(db,"Filter", "Highest quality beans roasted and brewed fresh", R.mipmap.ic_filter);
+        }
     }
 
     @Override
@@ -40,10 +51,11 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    private static void insertDrinks(SQLiteDatabase db, String name, String description, int imageResId){
+    private static void insertDrink(SQLiteDatabase db, String name, String description, int imageResId){
         ContentValues drinkValues = new ContentValues();
         drinkValues.put(COLUMN_NAME, name);
         drinkValues.put(COLUMN_DESCRIPTION, description);
         drinkValues.put(COLUMN_IMAGE_RES_ID, imageResId );
+        db.insert(TABLE_NAME_DRINKS, null, drinkValues);
     }
 }
