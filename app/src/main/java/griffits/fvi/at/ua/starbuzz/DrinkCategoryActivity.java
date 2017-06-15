@@ -21,6 +21,7 @@ public class DrinkCategoryActivity extends ListActivity{
 
         ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(this, android.R.layout.simple_list_item_1, Drink.drinks);
         listDrinks.setAdapter(listAdapter);
+
     }
 
     @Override

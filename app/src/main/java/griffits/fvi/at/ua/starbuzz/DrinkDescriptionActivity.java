@@ -1,11 +1,15 @@
 package griffits.fvi.at.ua.starbuzz;
 
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import griffits.fvi.at.ua.starbuzz.Menu.Drink;
+import griffits.fvi.at.ua.starbuzz.Menu.StarbuzzDatabaseHelper;
 
 public class DrinkDescriptionActivity extends AppCompatActivity {
 
@@ -20,7 +24,17 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drink_descriotion);
 
         init();
-        //Get the drink from the intent
+
+        try {
+            SQLiteOpenHelper starbuzzDatebaseHelper = new StarbuzzDatabaseHelper(this);
+            SQLiteDatabase db = starbuzzDatebaseHelper.getReadableDatabase();
+
+        } catch (SQLException e){
+
+        }
+
+
+     /*   //Get the drink from the intent
         int  drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
         Drink drink = Drink.drinks[drinkNo];
 
@@ -32,7 +46,9 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
         name.setText(drink.getName());
 
         //fill text  description
-        description.setText(drink.getDescription());
+        description.setText(drink.getDescription());*/
+
+
 
 
     }

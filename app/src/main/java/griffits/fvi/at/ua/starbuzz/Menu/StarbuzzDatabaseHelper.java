@@ -27,7 +27,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
             COLUMN_ID + " int primary key, " + COLUMN_NAME + " text not null, " +
             COLUMN_DESCRIPTION + " text not null, " + COLUMN_IMAGE_RES_ID + " int not null";
 
-    StarbuzzDatabaseHelper (Context context){
+    public StarbuzzDatabaseHelper(Context context){
       super(context,DB_NAME, null, DB_VERSION);
     }
 
