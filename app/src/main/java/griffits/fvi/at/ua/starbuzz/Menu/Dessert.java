@@ -17,7 +17,7 @@ public class Dessert {
         this.idResImg = idResImg;
     }
 
-
+    //drinks is an array of Dessert
     public  static  final Dessert[] desserts = {
             new Dessert("Tiramisu",
                     "Italian dessert from mascarpone cheese, cookies added as filler \"ladyfinger\" coffee and cocoa.",

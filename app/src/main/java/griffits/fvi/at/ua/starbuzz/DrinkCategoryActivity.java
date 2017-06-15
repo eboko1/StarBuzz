@@ -19,15 +19,15 @@ public class DrinkCategoryActivity extends ListActivity{
 
         ListView listDrinks = getListView();
 
-        ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(this, android.R.layout.simple_list_item_1, Drink.drinks);
-        listDrinks.setAdapter(listAdapter);
+       // ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(this, android.R.layout.simple_list_item_1, Drink.drinks);
+      //  listDrinks.setAdapter(listAdapter);
 
     }
 
     @Override
     public void onListItemClick(ListView listView, View itemView, int position, long id) {
         Intent intent = new Intent(DrinkCategoryActivity.this, DrinkDescriptionActivity.class);
-        intent.putExtra(DrinkDescriptionActivity.EXTRA_DRINKNO, (int) id);
+        intent.putExtra(DrinkDescriptionActivity.EXTRA_DRINK_NUMBER, (int) id);
         startActivity(intent);
     }
 }

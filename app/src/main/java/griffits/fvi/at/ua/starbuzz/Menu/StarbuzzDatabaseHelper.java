@@ -17,7 +17,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String DB_NAME = "starbuzz.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 1;  // for update database change  version  --->2
 
 
     public final static String TABLE_NAME_DRINKS = "drinks";
