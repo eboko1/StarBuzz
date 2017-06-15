@@ -24,6 +24,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,28 +45,17 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
                     new String[]{Integer.toString(drinkNo)},
                     null, null, null);
 
+          if (cursor.moveToFirst()) {
+              name.setText(cursor.getString(0));
+              description.setText(cursor.getString(1));
+              photo.setImageResource(cursor.getInt(2));
+          }
+          cursor.close();
+          db.close();
+
         } catch (SQLException e){
             Toast.makeText(getApplicationContext(),"Database unavailable ",Toast.LENGTH_LONG).show();
         }
-
-
-     /*   //Get the drink from the intent
-
-        Drink drink = Drink.drinks[drinkNo];
-
-        //Populate the drink image
-        photo.setImageResource(drink.getImgResId());
-      // photo.setContentDescription(drink.getName());
-
-        //fill text name
-        name.setText(drink.getName());
-
-        //fill text  description
-        description.setText(drink.getDescription());*/
-
-
-
-
     }
 
     public void init(){
