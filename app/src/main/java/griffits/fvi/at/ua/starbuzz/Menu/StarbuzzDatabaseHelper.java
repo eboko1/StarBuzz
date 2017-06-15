@@ -45,7 +45,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
             insertDrink(db,"Filter", "Highest quality beans roasted and brewed fresh", R.mipmap.ic_filter);
         }
         if (oldVersion < 2){
-            
+            db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
         }
     }
 
