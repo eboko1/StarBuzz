@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import griffits.fvi.at.ua.starbuzz.R;
 
@@ -12,6 +13,8 @@ import griffits.fvi.at.ua.starbuzz.R;
  */
 
 public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
+    private static final String LOG_INFO = "mylog";
+
 
     private static final String DB_NAME = "starbuzz.db";
     private static final int DB_VERSION = 1;
@@ -29,11 +32,14 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     public StarbuzzDatabaseHelper(Context context){
       super(context,DB_NAME, null, DB_VERSION);
+        Log.i(LOG_INFO, "StarbuzzDatabaseHelper constructor ");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         updateMyDatabase(db, 0, DB_VERSION);
+        Log.i(LOG_INFO, "StarbuzzDatabaseHelper start onCreate " + " name database " + DB_NAME
+                + " version database " + DB_VERSION);
 
     }
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
@@ -52,6 +58,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             updateMyDatabase(db,oldVersion, newVersion);
+            Log.i(LOG_INFO, "StarbuzzDatabaseHelper onUpgrade " + " oldVersion| " + oldVersion + " newVersion| " + newVersion);
     }
 
     private static void insertDrink(SQLiteDatabase db, String name, String description, int imageResId){
@@ -60,5 +67,6 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
         drinkValues.put(COLUMN_DESCRIPTION, description);
         drinkValues.put(COLUMN_IMAGE_RES_ID, imageResId );
         db.insert(TABLE_NAME_DRINKS, null, drinkValues);
+        Log.i(LOG_INFO, "StarbuzzDatabaseHelper insertDrink ");
     }
 }

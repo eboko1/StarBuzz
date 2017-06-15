@@ -7,16 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import griffits.fvi.at.ua.starbuzz.Menu.Drink;
 import griffits.fvi.at.ua.starbuzz.Menu.StarbuzzDatabaseHelper;
 
 public class DrinkDescriptionActivity extends AppCompatActivity {
 
-     TextView name, description;
-     ImageView photo;
-
     public static final String EXTRA_DRINKNO = "drinkNo" ;
+    private static final String LOG_INFO = "mylog";
+
+     private TextView name, description;
+     private ImageView photo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +29,19 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
         init();
 
+        int  drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
+
         try {
             SQLiteOpenHelper starbuzzDatebaseHelper = new StarbuzzDatabaseHelper(this);
             SQLiteDatabase db = starbuzzDatebaseHelper.getReadableDatabase();
 
         } catch (SQLException e){
-
+            Toast.makeText(getApplicationContext(),"SQLException ",Toast.LENGTH_LONG).show();
         }
 
 
      /*   //Get the drink from the intent
-        int  drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
+
         Drink drink = Drink.drinks[drinkNo];
 
         //Populate the drink image
