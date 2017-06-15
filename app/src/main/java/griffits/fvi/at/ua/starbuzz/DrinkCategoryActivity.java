@@ -27,7 +27,7 @@ public class DrinkCategoryActivity extends ListActivity{
         super.onCreate(savedInstanceState);
 
         ListView listDrinks = getListView();
-        
+
      try {
          SQLiteOpenHelper starbuzzDatabuzzHelper = new StarbuzzDatabaseHelper(this);
          db = starbuzzDatabuzzHelper.getReadableDatabase();
@@ -53,5 +53,12 @@ public class DrinkCategoryActivity extends ListActivity{
         Intent intent = new Intent(DrinkCategoryActivity.this, DrinkDescriptionActivity.class);
         intent.putExtra(DrinkDescriptionActivity.EXTRA_DRINK_NUMBER, (int) id);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cursor.close();
+        db.close();
     }
 }
