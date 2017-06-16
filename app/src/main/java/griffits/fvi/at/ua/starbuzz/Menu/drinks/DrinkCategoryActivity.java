@@ -25,11 +25,12 @@ public class DrinkCategoryActivity extends ListActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
         ListView listDrinks = getListView();
 
      try {
-         SQLiteOpenHelper starbuzzDatabuzzHelper = new StarbuzzDatabaseHelper(this);
-         db = starbuzzDatabuzzHelper.getReadableDatabase();
+
+         db = starbuzzDatabaseHelper.getReadableDatabase();
 
          cursor = db.query("DRINKS", new String[]{"_id", "NAME"},
                  null, null, null, null, null);
