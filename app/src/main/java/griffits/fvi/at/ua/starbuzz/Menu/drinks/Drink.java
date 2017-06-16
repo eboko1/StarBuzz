@@ -1,4 +1,4 @@
-package griffits.fvi.at.ua.starbuzz.Menu;
+package griffits.fvi.at.ua.starbuzz.Menu.drinks;
 
 import griffits.fvi.at.ua.starbuzz.R;
 
@@ -16,12 +16,6 @@ public class Drink {
         this.description = description;
         this.imgResId = imgResId;
     }
-    //drinks is an array of Drinks
-  /*  public  static  final Drink[] drinks = {
-        new Drink("Latte", "A couple of espresso shots with streamed milk", R.mipmap.ic_latte),
-        new Drink("Cappuccino","Espresso, hot milk, and a steamed milk foam", R.mipmap.ic_cappuccino),
-        new Drink("Filter", "Highest quality beans roasted and brewed fresh", R.mipmap.ic_filter)
-    };*/
 
     public void setName(String name) {
         this.name = name;

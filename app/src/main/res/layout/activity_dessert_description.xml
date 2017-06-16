@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="griffits.fvi.at.ua.starbuzz.DessertDescriptionActivity">
+    tools:context="griffits.fvi.at.ua.starbuzz.Menu.dessert.DessertDescriptionActivity">
 
     <ImageView
         android:id="@+id/image_dessert"

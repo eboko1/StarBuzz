@@ -1,11 +1,12 @@
-package griffits.fvi.at.ua.starbuzz;
+package griffits.fvi.at.ua.starbuzz.Menu.dessert;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import griffits.fvi.at.ua.starbuzz.Menu.Dessert;
+import griffits.fvi.at.ua.starbuzz.Menu.dessert.Dessert;
+import griffits.fvi.at.ua.starbuzz.R;
 
 public class DessertDescriptionActivity extends AppCompatActivity {
 

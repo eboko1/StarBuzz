@@ -1,4 +1,4 @@
-package griffits.fvi.at.ua.starbuzz;
+package griffits.fvi.at.ua.starbuzz.Menu.drinks;
 
 import android.database.Cursor;
 import android.database.SQLException;
@@ -11,24 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import griffits.fvi.at.ua.starbuzz.Menu.Drink;
-import griffits.fvi.at.ua.starbuzz.Menu.StarbuzzDatabaseHelper;
+import griffits.fvi.at.ua.starbuzz.StarbuzzDatabaseHelper;
+import griffits.fvi.at.ua.starbuzz.R;
 
 public class DrinkDescriptionActivity extends AppCompatActivity {
 
-    public static final String EXTRA_DRINK_NUMBER = "drinkNo" ;
+    public static final String EXTRA_DRINK_NUMBER = "drinkNumber" ;
     private static final String LOG_INFO = "mylog";
 
      private TextView name, description;
      private ImageView photo;
 
-
+     private Cursor cursor;
+     private SQLiteDatabase db;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drink_descriotion);
+        setContentView(R.layout.activity_drink_description);
 
         init();
 
@@ -37,9 +38,9 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
         try {
             SQLiteOpenHelper starbuzzDatebaseHelper = new StarbuzzDatabaseHelper(this);
-            SQLiteDatabase db = starbuzzDatebaseHelper.getReadableDatabase();
+            db = starbuzzDatebaseHelper.getReadableDatabase();
 
-            Cursor cursor = db.query("DRINK",
+             cursor = db.query("DRINK",
                     new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID"},
                     "_id = ?",
                     new String[]{Integer.toString(drinkNo)},
@@ -50,11 +51,10 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
               description.setText(cursor.getString(1));
               photo.setImageResource(cursor.getInt(2));
           }
-          cursor.close();
-          db.close();
+
 
         } catch (SQLException e){
-            Toast.makeText(getApplicationContext(),"Database unavailable ",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Database unavailable ", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -62,5 +62,12 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
        photo = (ImageView)findViewById(R.id.photo);
        name = (TextView)findViewById(R.id.name);
        description = (TextView)findViewById(R.id.description);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cursor.close();
+        db.close();
     }
 }

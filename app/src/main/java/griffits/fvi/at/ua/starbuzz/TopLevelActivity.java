@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import griffits.fvi.at.ua.starbuzz.Menu.dessert.DessertCategoryActivity;
+import griffits.fvi.at.ua.starbuzz.Menu.drinks.DrinkCategoryActivity;
 
 public class TopLevelActivity extends AppCompatActivity {
 

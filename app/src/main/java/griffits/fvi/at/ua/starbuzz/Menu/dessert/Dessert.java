@@ -1,4 +1,4 @@
-package griffits.fvi.at.ua.starbuzz.Menu;
+package griffits.fvi.at.ua.starbuzz.Menu.dessert;
 
 import griffits.fvi.at.ua.starbuzz.R;
 

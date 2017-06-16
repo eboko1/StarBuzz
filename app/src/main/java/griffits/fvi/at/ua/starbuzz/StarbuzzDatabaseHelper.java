@@ -1,4 +1,4 @@
-package griffits.fvi.at.ua.starbuzz.Menu;
+package griffits.fvi.at.ua.starbuzz;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,21 +16,21 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private static final String LOG_INFO = "mylog";
 
 
-    private static final String DB_NAME = "starbuzz.db";
+    private static final String DB_NAME = "starbuzz";
     private static final int DB_VERSION = 1;  // for update database change  version  --->2
 
 
-    public final static String TABLE_NAME_DRINKS = "drinks";
+    public final static String TABLE_NAME_DRINKS = "DRINKS";
     private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_DESCRIPTION = "description";
-    private static final String COLUMN_IMAGE_RES_ID = "imageResId";
+    private static final String COLUMN_NAME = "NAME";
+    private static final String COLUMN_DESCRIPTION = "DESCRIPTION";
+    private static final String COLUMN_IMAGE_RES_ID = "IMAGE_RESOURCE_ID";
 
     private static final String CREATE_DATABASE_DRINK = "create table " + TABLE_NAME_DRINKS + " (" +
             COLUMN_ID + " int primary key, " + COLUMN_NAME + " text not null, " +
             COLUMN_DESCRIPTION + " text not null, " + COLUMN_IMAGE_RES_ID + " int not null";
 
-    public StarbuzzDatabaseHelper(Context context){
+     public StarbuzzDatabaseHelper(Context context){
       super(context,DB_NAME, null, DB_VERSION);
         Log.i(LOG_INFO, "StarbuzzDatabaseHelper constructor ");
     }
@@ -43,13 +43,14 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     }
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
-
         if(oldVersion < 1){
             db.execSQL(CREATE_DATABASE_DRINK);
+
             insertDrink(db,"Latte", "A couple of espresso shots with streamed milk", R.mipmap.ic_latte);
             insertDrink(db,"Cappuccino","Espresso, hot milk, and a steamed milk foam", R.mipmap.ic_cappuccino);
             insertDrink(db,"Filter", "Highest quality beans roasted and brewed fresh", R.mipmap.ic_filter);
         }
+
         if (oldVersion < 2){
             db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
         }
@@ -63,10 +64,13 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     private static void insertDrink(SQLiteDatabase db, String name, String description, int imageResId){
         ContentValues drinkValues = new ContentValues();
+
         drinkValues.put(COLUMN_NAME, name);
         drinkValues.put(COLUMN_DESCRIPTION, description);
         drinkValues.put(COLUMN_IMAGE_RES_ID, imageResId );
+
         db.insert(TABLE_NAME_DRINKS, null, drinkValues);
+
         Log.i(LOG_INFO, "StarbuzzDatabaseHelper insertDrink ");
     }
 }

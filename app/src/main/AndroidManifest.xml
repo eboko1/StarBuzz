@@ -17,14 +17,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DrinkCategoryActivity"
+            android:name=".Menu.drinks.DrinkCategoryActivity"
             android:label="@string/title_activity_drink_category" />
         <activity
-            android:name=".DessertCategoryActivity"
+            android:name=".Menu.dessert.DessertCategoryActivity"
             android:label="@string/title_activity_dessert_category" />
 
-        <activity android:name=".DrinkDescriptionActivity" />
-        <activity android:name=".DessertDescriptionActivity"/>
+        <activity android:name=".Menu.drinks.DrinkDescriptionActivity" />
+        <activity android:name=".Menu.dessert.DessertDescriptionActivity"/>
 
     </application>
 

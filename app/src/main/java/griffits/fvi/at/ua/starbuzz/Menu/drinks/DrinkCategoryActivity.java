@@ -1,4 +1,4 @@
-package griffits.fvi.at.ua.starbuzz;
+package griffits.fvi.at.ua.starbuzz.Menu.drinks;
 
 import android.app.ListActivity;
 
@@ -9,14 +9,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-import griffits.fvi.at.ua.starbuzz.Menu.Drink;
-import griffits.fvi.at.ua.starbuzz.Menu.StarbuzzDatabaseHelper;
+import griffits.fvi.at.ua.starbuzz.StarbuzzDatabaseHelper;
 
 public class DrinkCategoryActivity extends ListActivity{
     private SQLiteDatabase db;
@@ -32,8 +31,8 @@ public class DrinkCategoryActivity extends ListActivity{
          SQLiteOpenHelper starbuzzDatabuzzHelper = new StarbuzzDatabaseHelper(this);
          db = starbuzzDatabuzzHelper.getReadableDatabase();
 
-         cursor = db.query("DRINK", new String[]{"_id", "NAME"},
-                  null, null, null, null, null);
+         cursor = db.query("DRINKS", new String[]{"_id", "NAME"},
+                 null, null, null, null, null);
 
          CursorAdapter listAdapter = new SimpleCursorAdapter(getApplicationContext(),
                  android.R.layout.simple_list_item_1,
@@ -44,7 +43,7 @@ public class DrinkCategoryActivity extends ListActivity{
          listDrinks.setAdapter(listAdapter);
 
      } catch(SQLException e) {
-         Toast.makeText(getApplicationContext(),"Database unavailable ", Toast.LENGTH_LONG).show();
+         Toast.makeText(this,"Database unavailable DrinkCategoryActivity", Toast.LENGTH_LONG).show();
      }
     }
 
