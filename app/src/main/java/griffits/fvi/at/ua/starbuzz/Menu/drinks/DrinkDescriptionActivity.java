@@ -37,19 +37,26 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
         Log.i(LOG_INFO, " DrinkDescriptionActivity  drink number click Category ListActivity" + EXTRA_DRINK_NUMBER);
 
         try {
-            SQLiteOpenHelper starbuzzDatebaseHelper = new StarbuzzDatabaseHelper(this);
-            db = starbuzzDatebaseHelper.getReadableDatabase();
-
-             cursor = db.query("DRINK",
+            SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
+            SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
+            Cursor cursor = db.query ("DRINK",
                     new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID"},
                     "_id = ?",
-                    new String[]{Integer.toString(drinkNo)},
-                    null, null, null);
+                    new String[] {Integer.toString(drinkNo)},
+                    null, null,null);
 
           if (cursor.moveToFirst()) {
-              name.setText(cursor.getString(0));
-              description.setText(cursor.getString(1));
-              photo.setImageResource(cursor.getInt(2));
+              String nameText = cursor.getString(0);
+              String descriptionText = cursor.getString(1);
+              int photoText = cursor.getInt(2);
+
+              name.setText(nameText);
+              description.setText(descriptionText);
+              photo.setImageResource(photoText);
+
+              photo.setContentDescription(nameText);
+              cursor.close();
+              db.close();
           }
 
 
@@ -67,7 +74,6 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        cursor.close();
-        db.close();
+
     }
 }
