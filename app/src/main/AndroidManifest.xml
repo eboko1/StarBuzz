@@ -22,10 +22,9 @@
         <activity
             android:name=".Menu.dessert.DessertCategoryActivity"
             android:label="@string/title_activity_dessert_category" />
-
         <activity android:name=".Menu.drinks.DrinkDescriptionActivity" />
-        <activity android:name=".Menu.dessert.DessertDescriptionActivity"/>
-
+        <activity android:name=".Menu.dessert.DessertDescriptionActivity" />
+        <activity android:name=".MakeChangesMenuActivity"></activity>
     </application>
 
 </manifest>
