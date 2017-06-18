@@ -26,15 +26,16 @@ public class TopLevelActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
              if(position == 0){
-                 Toast.makeText(getApplication(),"Drinks", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplication(),"Drinks", Toast.LENGTH_SHORT).show();
                  startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
              } else if(position == 1){
-                 Toast.makeText(getApplication(),"Desserts ", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplication(),"Desserts", Toast.LENGTH_SHORT).show();
                  startActivity(new Intent(getApplicationContext(), DessertCategoryActivity.class));
              } else if(position == 2){
-                  Toast.makeText(getApplication(),"Foods ", Toast.LENGTH_LONG).show();
+                  Toast.makeText(getApplication(),"Foods", Toast.LENGTH_SHORT).show();
              }else if(position == 3){
-                 Toast.makeText(getApplication(),"Stores ", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplication(),"Add in menu", Toast.LENGTH_SHORT).show();
+                 onClickAddToMenu();
              }
             }
         };
@@ -46,8 +47,10 @@ public class TopLevelActivity extends AppCompatActivity {
 
     public void  init(){
         listViewOption  = (ListView)findViewById(R.id.list_options);
-
     }
 
+    public void onClickAddToMenu(){
+        startActivity(new Intent(this, MakeChangesMenuActivity.class));
+    }
 
 }
