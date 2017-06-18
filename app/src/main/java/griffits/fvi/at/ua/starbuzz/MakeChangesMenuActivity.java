@@ -16,8 +16,9 @@ import android.widget.Toast;
 
 public class MakeChangesMenuActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String LOG_INFO = "mylog";
+
     private EditText et_name, et_description, et_category;
-    private Button btn_add_data_table, btn_delete_data_table;
+    private Button btn_add_data_table, btn_delete_data_table, btn_clean_data_table ;
 
 
     String name, description, category;
@@ -30,9 +31,13 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_changes_menu);
         init();
+
         btn_add_data_table.setOnClickListener(this);
+        btn_delete_data_table.setOnClickListener(this);
+        btn_clean_data_table.setOnClickListener(this);
 
         sqLiteOpenHelper = new StarbuzzDatabaseHelper(this);
+
     }
 
 
@@ -48,8 +53,13 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
         et_name = (EditText)findViewById(R.id.et_name);
         et_description = (EditText)findViewById(R.id.et_description);
         et_category= (EditText)findViewById(R.id.et_category);
+
         btn_add_data_table = (Button) findViewById(R.id.btn_add_datatable);
+
         btn_delete_data_table = (Button)findViewById(R.id.btn_delete_datatable);
+
+        btn_clean_data_table = (Button)findViewById(R.id.btn_clean_datatable);
+
     }
 
     @Override
@@ -76,6 +86,12 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
             case R.id.btn_delete_datatable:
 
                 break;
+            case R.id.btn_clean_datatable:
+               int cleanCount = sqLiteDatabase.delete("DRINK", null, null);
+                Log.i(LOG_INFO, "onClick button Add in database cleanCount = " + cleanCount);
+                break;
         }
+
+
     }
 }

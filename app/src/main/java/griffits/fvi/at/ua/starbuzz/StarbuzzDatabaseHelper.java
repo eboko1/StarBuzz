@@ -49,9 +49,9 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
         if (oldVersion < 1) {
             db.execSQL(TABLE_CREATE_DRINK);
-            insertDrink(db, "Latte", "Espresso and steamed milk", "drink", R.mipmap.ic_latte);
-            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", "drink", R.mipmap.ic_cappuccino);
-            insertDrink(db, "Filter", "Our best drip coffee", "drink", R.mipmap.ic_filter);
+            insertDrink(db, "Latte", "Espresso and steamed milk", "drinks", R.mipmap.ic_latte);
+            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", "drinks", R.mipmap.ic_cappuccino);
+            insertDrink(db, "Filter", "Our best drip coffee", "drinks", R.mipmap.ic_filter);
         }
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
@@ -62,7 +62,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
         ContentValues drinkValues = new ContentValues();
         drinkValues.put("NAME", name);
         drinkValues.put("DESCRIPTION", description);
-        drinkValues.put("CATEGORY", description);
+        drinkValues.put("CATEGORY", category);
         drinkValues.put("IMAGE_RESOURCE_ID", resourceId);
         db.insert("DRINK", null, drinkValues);
     }

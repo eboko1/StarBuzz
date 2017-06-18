@@ -40,6 +40,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="delete"/>
+        <Button
+            android:id="@+id/btn_clean_datatable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="clean"/>
 
     </LinearLayout>
 
