@@ -29,11 +29,19 @@ public class TopLevelActivity extends AppCompatActivity {
                  Toast.makeText(getApplication(),"Drinks", Toast.LENGTH_SHORT).show();
                  startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
              } else if(position == 1){
-                 Toast.makeText(getApplication(),"Desserts", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplication(),"Breakfast", Toast.LENGTH_SHORT).show();
+             }else if(position == 2){
+                 Toast.makeText(getApplication(),"Sandwiches", Toast.LENGTH_SHORT).show();
+             } else if(position == 3){
+                 Toast.makeText(getApplication(),"Burgers", Toast.LENGTH_SHORT).show();
+             } else if(position == 4){
+                 Toast.makeText(getApplication(),"Pizzas", Toast.LENGTH_SHORT).show();
+             } else if(position == 5) {
+                 Toast.makeText(getApplication(), "Desserts", Toast.LENGTH_SHORT).show();
                  startActivity(new Intent(getApplicationContext(), DessertCategoryActivity.class));
-             } else if(position == 2){
-                  Toast.makeText(getApplication(),"Foods", Toast.LENGTH_SHORT).show();
-             }else if(position == 3){
+             } else if(position == 6){
+                 Toast.makeText(getApplication(),"Specials", Toast.LENGTH_SHORT).show();
+             } else if(position == 7){
                  Toast.makeText(getApplication(),"Add in menu", Toast.LENGTH_SHORT).show();
                  onClickAddToMenu();
              }

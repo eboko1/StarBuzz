@@ -23,6 +23,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CREATE_DRINK = "CREATE TABLE DRINK (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "NAME TEXT, "
             + "DESCRIPTION TEXT, "
+            + "CATEGORY TEXT, "
             + "IMAGE_RESOURCE_ID INTEGER);";
 
      public StarbuzzDatabaseHelper(Context context){
@@ -48,19 +49,20 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
         if (oldVersion < 1) {
             db.execSQL(TABLE_CREATE_DRINK);
-            insertDrink(db, "Latte", "Espresso and steamed milk", R.mipmap.ic_latte);
-            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", R.mipmap.ic_cappuccino);
-            insertDrink(db, "Filter", "Our best drip coffee", R.mipmap.ic_filter);
+            insertDrink(db, "Latte", "Espresso and steamed milk", "drink", R.mipmap.ic_latte);
+            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", "drink", R.mipmap.ic_cappuccino);
+            insertDrink(db, "Filter", "Our best drip coffee", "drink", R.mipmap.ic_filter);
         }
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
         }
     }
     private static void insertDrink(SQLiteDatabase db, String name,
-                                    String description, int resourceId) {
+                                    String description, String category,int resourceId) {
         ContentValues drinkValues = new ContentValues();
         drinkValues.put("NAME", name);
         drinkValues.put("DESCRIPTION", description);
+        drinkValues.put("CATEGORY", description);
         drinkValues.put("IMAGE_RESOURCE_ID", resourceId);
         db.insert("DRINK", null, drinkValues);
     }

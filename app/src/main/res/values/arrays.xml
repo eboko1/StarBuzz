@@ -2,8 +2,12 @@
 <resources>
     <string-array name="options">
         <item>Drinks</item>
+        <item>Breakfast</item>
+        <item>Sandwiches</item>
+        <item>Burgers</item>
+        <item>Pizzas</item>
         <item>Desserts</item>
-        <item>Foods</item>
+        <item>Specials</item>
         <item>Add to menu</item>
 
     </string-array>
