@@ -2,4 +2,5 @@
     <string name="app_name">StarBuzz</string>
     <string name="title_activity_drink_category">name</string>
     <string name="title_activity_dessert_category">name</string>
+
 </resources>

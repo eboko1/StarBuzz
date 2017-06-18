@@ -7,6 +7,11 @@
     tools:context="griffits.fvi.at.ua.starbuzz.MakeChangesMenuActivity">
 
     <EditText
+        android:id="@+id/et_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="enter category"/>
+    <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,11 +23,6 @@
         android:layout_height="wrap_content"
         android:hint="enter description"/>
 
-    <EditText
-        android:id="@+id/et_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="enter category"/>
 
     <LinearLayout
         android:layout_width="match_parent"

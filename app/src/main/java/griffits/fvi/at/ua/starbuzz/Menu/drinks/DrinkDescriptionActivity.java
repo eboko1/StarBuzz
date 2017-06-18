@@ -22,8 +22,6 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
      private TextView name, description;
      private ImageView photo;
 
-     private Cursor cursor;
-     private SQLiteDatabase db;
 
 
     @Override
@@ -40,7 +38,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
             Cursor cursor = db.query ("DRINK",
-                    new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID"},
+                    new String[] {"NAME", "DESCRIPTION","CATEGORY", "IMAGE_RESOURCE_ID"},
                     "_id = ?",
                     new String[] {Integer.toString(drinkNo)},
                     null, null,null);
@@ -61,7 +59,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
 
         } catch (SQLException e){
-            Toast.makeText(getApplicationContext(), "Database unavailable ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "DrinkDescriptionActivity  Database unavailable ", Toast.LENGTH_LONG).show();
         }
     }
 
