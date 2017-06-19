@@ -14,6 +14,22 @@ import griffits.fvi.at.ua.starbuzz.Menu.drinks.DrinkCategoryActivity;
 public class TopLevelActivity extends AppCompatActivity {
 
     private ListView listViewOption;
+
+    int [] imagesMenu = {R.drawable.drink,
+                            R.drawable.breakfast,
+                            R.drawable.sandwich,
+                            R.drawable.burger,
+                            R.drawable.pizza2,
+                            R.drawable.dessert,
+                            R.drawable.ic_adding};
+
+    String[] titlesMenu = { "Drinks",
+                            "Breakfast",
+                            "Sandwiches",
+                            "Burgers",
+                            "Pizzas",
+                            "Desserts",
+                            "Add in menu"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
