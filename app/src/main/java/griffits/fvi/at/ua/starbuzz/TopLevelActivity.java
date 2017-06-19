@@ -50,7 +50,20 @@ public class TopLevelActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter(this, listId, listTitle);
         listViewOption.setAdapter(myAdapter);
 
+        listViewOption.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+             if(listTitle.get(position).equals("Drinks")){
+                 Toast.makeText(getApplication(),"Drinks", Toast.LENGTH_SHORT).show();
+                 startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
+             }
+            }
+        });
     }
+
+
+
 
     public ArrayList<Integer> getListImageId(){
 
