@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="options">
-        <item>Drinks</item>
-        <item>Breakfast</item>
-        <item>Sandwiches</item>
-        <item>Burgers</item>
-        <item>Pizzas</item>
-        <item>Desserts</item>
-        <item>Specials</item>
-        <item>Add to menu</item>
 
-    </string-array>
 </resources>
