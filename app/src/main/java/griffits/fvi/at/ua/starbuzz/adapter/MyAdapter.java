@@ -4,9 +4,13 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+
+import griffits.fvi.at.ua.starbuzz.R;
 
 /**
  * Created by Vika on 19.06.2017.
@@ -40,6 +44,17 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+
+        if( convertView == null){
+            convertView = View.inflate(context, R.layout.items_list, null);
+        }
+
+        ImageView images = (ImageView)convertView.findViewById(R.id.imageView);
+        TextView tvTitle = (TextView)convertView.findViewById(R.id.tvTitle);
+
+        images.setImageResource(listId.get(position));
+        tvTitle.setText(nameList.get(position));
+
+        return convertView;
     }
 }
