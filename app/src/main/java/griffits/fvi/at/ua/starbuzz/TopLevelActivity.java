@@ -50,6 +50,7 @@ public class TopLevelActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter(this, listId, listTitle);
         listViewOption.setAdapter(myAdapter);
 
+
         listViewOption.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -57,6 +58,32 @@ public class TopLevelActivity extends AppCompatActivity {
              if(listTitle.get(position).equals("Drinks")){
                  Toast.makeText(getApplication(),"Drinks", Toast.LENGTH_SHORT).show();
                  startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
+             }
+
+             if(listTitle.get(position).equals("Breakfast")){
+                 Toast.makeText(getApplication(),"Breakfast", Toast.LENGTH_SHORT).show();
+             }
+
+             if(listTitle.get(position).equals("Sandwiches")){
+                 Toast.makeText(getApplication(),"Sandwiches", Toast.LENGTH_SHORT).show();
+             }
+
+             if(listTitle.get(position).equals("Burgers")){
+                 Toast.makeText(getApplication(),"Burgers", Toast.LENGTH_SHORT).show();
+             }
+
+             if(listTitle.get(position).equals("Pizzas")){
+                 Toast.makeText(getApplication(),"Pizzas", Toast.LENGTH_SHORT).show();
+             }
+
+             if(listTitle.get(position).equals("Desserts")){
+                 Toast.makeText(getApplication(),"Desserts", Toast.LENGTH_SHORT).show();
+                 startActivity(new Intent(getApplicationContext(), DessertCategoryActivity.class));
+             }
+
+             if(listTitle.get(position).equals("Add in menu")){
+                 Toast.makeText(getApplication(),"Add in menu", Toast.LENGTH_SHORT).show();
+                 startActivity(new Intent(getApplicationContext(), MakeChangesMenuActivity.class));
              }
             }
         });
