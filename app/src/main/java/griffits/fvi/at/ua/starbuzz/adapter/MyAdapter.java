@@ -50,7 +50,7 @@ public class MyAdapter extends BaseAdapter {
         }
 
         ImageView images = (ImageView)convertView.findViewById(R.id.imageView);
-        TextView tvTitle = (TextView)convertView.findViewById(R.id.tvTitle);
+        TextView tvTitle = (TextView)convertView.findViewById(R.id.textView);
 
         images.setImageResource(listId.get(position));
         tvTitle.setText(nameList.get(position));

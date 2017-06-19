@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import griffits.fvi.at.ua.starbuzz.Menu.dessert.DessertCategoryActivity;
 import griffits.fvi.at.ua.starbuzz.Menu.drinks.DrinkCategoryActivity;
+import griffits.fvi.at.ua.starbuzz.adapter.MyAdapter;
 
 public class TopLevelActivity extends AppCompatActivity {
 
@@ -40,12 +41,19 @@ public class TopLevelActivity extends AppCompatActivity {
 
         listViewOption = (ListView)findViewById(R.id.list_options);
 
+        listId = new ArrayList<Integer>();
+        listTitle = new ArrayList<String>();
 
+        listId = getListImageId();
+        listTitle = getListTitle();
+
+        MyAdapter myAdapter = new MyAdapter(this, listId, listTitle);
+        listViewOption.setAdapter(myAdapter);
 
     }
 
     public ArrayList<Integer> getListImageId(){
-        listId = new ArrayList<Integer>();
+
         listId.add(R.drawable.drink);
         listId.add(R.drawable.breakfast);
         listId.add(R.drawable.sandwich);
@@ -57,8 +65,8 @@ public class TopLevelActivity extends AppCompatActivity {
         return listId;
     }
 
-    public ArrayList<String> getListTitleL(){
-        listTitle = new ArrayList<String>();
+    public ArrayList<String> getListTitle(){
+
         listTitle.add("Drinks");
         listTitle.add("Breakfast");
         listTitle.add("Sandwiches");
