@@ -7,12 +7,14 @@
     android:orientation="vertical"
     tools:context="griffits.fvi.at.ua.starbuzz.TopLevelActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/menu"/>
 
-   <ImageView
-       android:layout_width="200dp"
-       android:layout_height="100dp"
-       android:src="@mipmap/ic_starbuzz_log"
-       android:contentDescription="@string/app_name"/>
+
+
+
 
 
     <ListView
