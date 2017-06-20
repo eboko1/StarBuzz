@@ -20,11 +20,12 @@
             android:name=".Menu.drinks.DrinkCategoryActivity"
             android:label="@string/title_activity_drink_category" />
         <activity
-            android:name=".Menu.dessert.DessertCategoryActivity"
+            android:name=".Menu.desserts.DessertCategoryActivity"
             android:label="@string/title_activity_dessert_category" />
         <activity android:name=".Menu.drinks.DrinkDescriptionActivity" />
-        <activity android:name=".Menu.dessert.DessertDescriptionActivity" />
-        <activity android:name=".MakeChangesMenuActivity"></activity>
+        <activity android:name=".Menu.desserts.DessertDescriptionActivity" />
+        <activity android:name=".MakeChangesMenuActivity" />
+        <activity android:name=".Menu.breakfast.BreakfastDescriptionActivity"></activity>
     </application>
 
 </manifest>

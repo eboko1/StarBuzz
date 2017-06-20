@@ -20,11 +20,12 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "Starbuzz";
     private static final int DB_VERSION = 1;  // for update database change  version  --->2
 
-    private static final String TABLE_CREATE_DRINK = "CREATE TABLE DRINK (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+    private static final String TABLE_CREATE_TABMENU = "CREATE TABLE TABMENU (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "NAME TEXT, "
             + "DESCRIPTION TEXT, "
             + "IMAGE_RESOURCE_ID INTEGER, "
             + "CATEGORY TEXT);";
+
 
      public StarbuzzDatabaseHelper(Context context){
       super(context,DB_NAME, null, DB_VERSION);
@@ -48,23 +49,38 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
         if (oldVersion < 1) {
-            db.execSQL(TABLE_CREATE_DRINK);
-            insertDrink(db, "Latte", "Espresso and steamed milk", R.mipmap.ic_latte, "drinks");
-            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", R.mipmap.ic_cappuccino, "drinks");
-            insertDrink(db, "Filter", "Our best drip coffee", R.mipmap.ic_filter, "drinks");
+            db.execSQL(TABLE_CREATE_TABMENU);
+            insertDrink(db, "Latte", "Espresso and steamed milk", R.mipmap.ic_latte, "Drinks");
+            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", R.mipmap.ic_cappuccino, "Drinks");
+            insertDrink(db, "Filter", "Our best drip coffee", R.mipmap.ic_filter, "Drinks");
         }
         if (oldVersion < 2) {
-            db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
+            db.execSQL("ALTER TABLE TABMENU ADD COLUMN FAVORITE NUMERIC;");
         }
     }
-    private static void insertDrink(SQLiteDatabase db, String name,
+
+    public static void insertDrink(SQLiteDatabase db, String name,
                                     String description, int resourceId, String category) {
         ContentValues drinkValues = new ContentValues();
         drinkValues.put("NAME", name);
         drinkValues.put("DESCRIPTION", description);
         drinkValues.put("IMAGE_RESOURCE_ID", resourceId);
         drinkValues.put("CATEGORY", category);
-        db.insert("DRINK", null, drinkValues);
+        db.insert("TABMENU", null, drinkValues);
     }
 
+    public void insertMenu(String name, String description, int resourceId, String category) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("NAME", name);
+        contentValues.put("DESCRIPTION", description);
+        contentValues.put("IMAGE_RESOURCE_ID", resourceId);
+        contentValues.put("CATEGORY", category);
+        this.getWritableDatabase().insertOrThrow("TABMENU", null, contentValues);
+    }
+    public void delete(String name){
+        this.getWritableDatabase().delete("TABMENU", "NAME='" + name + "'",null);
+    }
+    public void update(String oldName, String newName){
+        this.getWritableDatabase().execSQL("UPDATE TABMENU SET NAME='" + newName +"' WHERE NAME='" + oldName+"'",  null);
+    }
 }

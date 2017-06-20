@@ -1,4 +1,4 @@
-package griffits.fvi.at.ua.starbuzz.Menu.dessert;
+package griffits.fvi.at.ua.starbuzz.Menu.desserts;
 
 import android.app.ListActivity;
 import android.content.Intent;

@@ -2,22 +2,17 @@ package griffits.fvi.at.ua.starbuzz;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.ConditionVariable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import griffits.fvi.at.ua.starbuzz.Menu.dessert.DessertCategoryActivity;
+import griffits.fvi.at.ua.starbuzz.Menu.desserts.DessertCategoryActivity;
 import griffits.fvi.at.ua.starbuzz.Menu.drinks.DrinkCategoryActivity;
 import griffits.fvi.at.ua.starbuzz.adapter.MyAdapter;
 
@@ -60,8 +55,8 @@ public class TopLevelActivity extends AppCompatActivity {
                  startActivity(new Intent(getApplicationContext(), DrinkCategoryActivity.class));
              }
 
-             if(listTitle.get(position).equals("Breakfast")){
-                 Toast.makeText(getApplication(),"Breakfast", Toast.LENGTH_SHORT).show();
+             if(listTitle.get(position).equals("BreakfastCategoryActivity")){
+                 Toast.makeText(getApplication(),"BreakfastCategoryActivity", Toast.LENGTH_SHORT).show();
              }
 
              if(listTitle.get(position).equals("Sandwiches")){

@@ -30,7 +30,8 @@ public class DrinkCategoryActivity extends ListActivity{
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             db = starbuzzDatabaseHelper.getReadableDatabase();
-            cursor = db.query("DRINK",
+
+            cursor = db.query("TABMENU",
                     new String[]{"_id", "NAME"},
                     null, null, null, null, null);
 

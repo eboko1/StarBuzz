@@ -32,18 +32,22 @@
             android:id="@+id/btn_add_datatable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:text="add"/>
         <Button
             android:id="@+id/btn_delete_datatable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:text="delete"/>
         <Button
             android:id="@+id/btn_clean_datatable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="clean"/>
 

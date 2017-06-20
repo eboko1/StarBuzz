@@ -1,5 +1,6 @@
 package griffits.fvi.at.ua.starbuzz.Menu.drinks;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,7 +38,8 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
-            Cursor cursor = db.query ("DRINK",
+
+            Cursor cursor = db.query ("TABMENU",
                     new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID", "CATEGORY"},
                     "_id = ?",
                     new String[] {Integer.toString(drinkNo)},
@@ -56,7 +58,6 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
               cursor.close();
               db.close();
           }
-
 
         } catch (SQLException e){
             Toast.makeText(getApplicationContext(), "DrinkDescriptionActivity  Database unavailable ", Toast.LENGTH_LONG).show();
