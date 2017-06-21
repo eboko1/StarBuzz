@@ -14,6 +14,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 
+import griffits.fvi.at.ua.starbuzz.Menu.drinks.DrinkCategoryActivity;
 import griffits.fvi.at.ua.starbuzz.Menu.drinks.DrinkDescriptionActivity;
 import griffits.fvi.at.ua.starbuzz.StarbuzzDatabaseHelper;
 
@@ -22,5 +23,45 @@ import griffits.fvi.at.ua.starbuzz.StarbuzzDatabaseHelper;
  */
 
 public class BreakfastCategoryActivity extends ListActivity {
+    SQLiteDatabase db;
+    Cursor cursor;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ListView listDrinks = getListView();
+        try {
+            SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
+            db = starbuzzDatabaseHelper.getReadableDatabase();
+
+            cursor = db.query("TABMENU",
+                    new String[]{"_id", "NAME", "CATEGORY"},
+                    "CATEGORY = ?", new String[]{"Breakfast"}, null, null, null);
+
+            CursorAdapter listAdapter = new SimpleCursorAdapter(this,
+                    android.R.layout.simple_list_item_1,
+                    cursor,
+                    new String[]{"NAME"},
+                    new int[]{android.R.id.text1},
+                    0);
+            listDrinks.setAdapter(listAdapter);
+        } catch (SQLiteException e) {
+            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+    @Override
+    public void onListItemClick(ListView listView, View itemView, int position, long id) {
+        Intent intent = new Intent(getApplication(), BreakfastDescriptionActivity.class);
+        intent.putExtra(BreakfastDescriptionActivity.EXTRA_BREAKFAST_NUMBER, (int) id);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cursor.close();
+        db.close();
+    }
 }
