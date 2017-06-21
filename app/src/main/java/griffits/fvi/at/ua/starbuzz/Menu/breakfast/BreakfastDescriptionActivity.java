@@ -25,7 +25,7 @@ public class BreakfastDescriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_breakfast_description);
+        setContentView(R.layout.activity_drink_description);
 
             init();
 
@@ -40,7 +40,7 @@ public class BreakfastDescriptionActivity extends AppCompatActivity {
                         new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID", "CATEGORY"},
                         "_id = ?",
                         new String[] {Integer.toString(breakfastNumber)},
-                        null, null,null);
+                        null, null, null);
 
                 if (cursor.moveToFirst()) {
                     String nameText = cursor.getString(0);

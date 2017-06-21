@@ -24,8 +24,11 @@
             android:label="@string/title_activity_dessert_category" />
         <activity android:name=".Menu.drinks.DrinkDescriptionActivity" />
         <activity android:name=".Menu.desserts.DessertDescriptionActivity" />
+
         <activity android:name=".MakeChangesMenuActivity" />
+
         <activity android:name=".Menu.breakfast.BreakfastDescriptionActivity"></activity>
+        <activity android:name=".Menu.breakfast.BreakfastCategoryActivity"/>
     </application>
 
 </manifest>

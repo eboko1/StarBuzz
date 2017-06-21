@@ -30,7 +30,7 @@ public class BreakfastCategoryActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ListView listDrinks = getListView();
+        ListView list = getListView();
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             db = starbuzzDatabaseHelper.getReadableDatabase();
@@ -45,9 +45,9 @@ public class BreakfastCategoryActivity extends ListActivity {
                     new String[]{"NAME"},
                     new int[]{android.R.id.text1},
                     0);
-            listDrinks.setAdapter(listAdapter);
+            list.setAdapter(listAdapter);
         } catch (SQLiteException e) {
-            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "BreakfastCategoryActivity Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
