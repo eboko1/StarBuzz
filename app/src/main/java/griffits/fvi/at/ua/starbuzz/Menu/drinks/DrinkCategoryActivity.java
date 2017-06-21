@@ -32,8 +32,8 @@ public class DrinkCategoryActivity extends ListActivity{
             db = starbuzzDatabaseHelper.getReadableDatabase();
 
             cursor = db.query("TABMENU",
-                    new String[]{"_id", "NAME"},
-                    null, null, null, null, null);
+                    new String[]{"_id", "NAME", "CATEGORY"},
+                    "CATEGORY = ?", new String[]{"Drinks"}, null, null, null);
 
             CursorAdapter listAdapter = new SimpleCursorAdapter(this,
                     android.R.layout.simple_list_item_1,

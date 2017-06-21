@@ -2,9 +2,11 @@ package griffits.fvi.at.ua.starbuzz;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.TextView;
 
 import griffits.fvi.at.ua.starbuzz.R;
 
@@ -77,10 +79,19 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("CATEGORY", category);
         this.getWritableDatabase().insertOrThrow("TABMENU", null, contentValues);
     }
+
     public void delete(String name){
         this.getWritableDatabase().delete("TABMENU", "NAME='" + name + "'",null);
     }
+
     public void update(String oldName, String newName){
         this.getWritableDatabase().execSQL("UPDATE TABMENU SET NAME='" + newName +"' WHERE NAME='" + oldName+"'",  null);
+    }
+    public void list_all_table(TextView screen){
+        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM TABMENU", null);
+        screen.setText(" ");
+        while (cursor.moveToNext()){
+            screen.append(cursor.getString(1)+ " " +cursor.getString(4)+"\n");
+        }
     }
 }
