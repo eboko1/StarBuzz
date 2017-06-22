@@ -31,16 +31,15 @@
         <ImageView
             android:id="@+id/image_load"
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_height="100dp" />
 
         <Button
             android:id="@+id/btn_load_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="load"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp"
+            android:text="load" />
     </LinearLayout>
 
 
@@ -75,7 +74,7 @@
             android:id="@+id/btn_show_datatable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="show"/>
