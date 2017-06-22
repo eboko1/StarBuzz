@@ -91,7 +91,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM TABMENU", null);
         screen.setText(" ");
         while (cursor.moveToNext()){
-            screen.append(cursor.getString(1)+ " " +cursor.getString(4)+"\n");
+            screen.append(cursor.getString(1)+ " " +cursor.getString(3)+"\n");
         }
     }
 }

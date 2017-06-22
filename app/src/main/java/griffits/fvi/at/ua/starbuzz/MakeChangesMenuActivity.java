@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 public class MakeChangesMenuActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String LOG_INFO = "mylog";
+
     private static final int PICK_NAME = 100;
     Uri imageUri;
 
@@ -30,6 +31,7 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
     private ImageView image_load;
 
     String name, description, category;
+    int resourceId;
 
     SQLiteDatabase sqLiteDatabase;
 
@@ -55,7 +57,9 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
     public void getViewToString(){
         category = et_category.getText().toString();
         name = et_name.getText().toString();
+        resourceId = image_load.getId();
         description = et_description.getText().toString();
+
     }
 
     public void init(){
@@ -79,7 +83,7 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
         switch (v.getId()){
             case R.id.btn_add_datatable:
                 try{
-                    starbuzzDatabaseHelper.insertMenu(name, description, 0, category);
+                    starbuzzDatabaseHelper.insertMenu(name, description, resourceId, category);
                 } catch (SQLiteException e){
                     Toast.makeText(this,"MakeChangesMenuActivity error database", Toast.LENGTH_SHORT).show();
                 }
@@ -111,7 +115,7 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
     @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == RESULT_OK && requestCode == PICK_NAME){
+            if (resultCode == RESULT_OK && requestCode == PICK_NAME){
                 imageUri = data.getData();
                 image_load.setImageURI(imageUri);
         }

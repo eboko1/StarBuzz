@@ -32,7 +32,7 @@ public class DrinkCategoryActivity extends ListActivity{
             db = starbuzzDatabaseHelper.getReadableDatabase();
 
             cursor = db.query("TABMENU",
-                    new String[]{"_id", "NAME", "CATEGORY"},
+                    new String[]{"_id", "NAME", "IMAGE_RESOURCE_ID", "CATEGORY"},
                     "CATEGORY = ?", new String[]{"Drinks"}, null, null, null);
 
             CursorAdapter listAdapter = new SimpleCursorAdapter(this,
