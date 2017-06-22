@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +20,9 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
     private static final String LOG_INFO = "mylog";
 
     private EditText et_name, et_description, et_category;
-    private Button btn_add_data_table, btn_delete_data_table, btn_clean_data_table, btn_show_data_table ;
+    private Button btn_add_data_table, btn_delete_data_table, btn_clean_data_table, btn_show_data_table, btn_load_image ;
     private TextView screen;
+    private ImageView image_load;
 
     String name, description, category;
 
@@ -38,6 +40,7 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
         btn_delete_data_table.setOnClickListener(this);
         btn_clean_data_table.setOnClickListener(this);
         btn_show_data_table.setOnClickListener(this);
+        btn_load_image.setOnClickListener(this);
 
         starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
     }
@@ -58,6 +61,7 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
         btn_delete_data_table = (Button)findViewById(R.id.btn_delete_datatable);
         btn_clean_data_table = (Button)findViewById(R.id.btn_clean_datatable);
         btn_show_data_table = (Button)findViewById(R.id.btn_show_datatable);
+        btn_load_image = (Button)findViewById(R.id.btn_load_image);
         screen = (TextView)findViewById(R.id.tv_screen);
     }
 
@@ -83,6 +87,10 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.btn_show_datatable:
                 starbuzzDatabaseHelper.list_all_table(screen);
+                break;
+            case R.id.btn_load_image:
+
+
                 break;
         }
 
