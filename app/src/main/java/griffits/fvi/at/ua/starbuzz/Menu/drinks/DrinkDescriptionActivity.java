@@ -52,7 +52,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
               name.setText(nameText);
               description.setText(descriptionText);
-              photo.setImageResource(photoText);
+            //  photo.setImageResource(photoText);
 
               photo.setContentDescription(nameText);
               cursor.close();

@@ -84,18 +84,22 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
             case R.id.btn_add_datatable:
                 try{
                     starbuzzDatabaseHelper.insertMenu(name, description, resourceId, category);
+
                 } catch (SQLiteException e){
                     Toast.makeText(this,"MakeChangesMenuActivity error database", Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(this, "added to database", Toast.LENGTH_SHORT).show();
+                cleanView();
                 break;
             case R.id.btn_delete_datatable:
                     starbuzzDatabaseHelper.delete(name);
                     Toast.makeText(this, name + " delete", Toast.LENGTH_SHORT).show();
+                cleanView();
                 break;
             case R.id.btn_clean_datatable:
                int cleanCount = sqLiteDatabase.delete("TABMENU", null, null);
                 Log.i(LOG_INFO, "onClick button Add in database cleanCount = " + cleanCount);
+                cleanView();
                 break;
             case R.id.btn_show_datatable:
                 starbuzzDatabaseHelper.list_all_table(screen);
@@ -105,6 +109,12 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
                 break;
         }
 
+    }
+
+    private void cleanView() {
+            et_category.setText(" ");
+            et_name.setText(" ");
+            et_description.setText(" ");
     }
 
     private void openGallery(){
