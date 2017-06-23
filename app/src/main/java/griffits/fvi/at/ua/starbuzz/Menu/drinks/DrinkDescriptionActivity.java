@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import griffits.fvi.at.ua.starbuzz.MakeChangesMenuActivity;
 import griffits.fvi.at.ua.starbuzz.StarbuzzDatabaseHelper;
 import griffits.fvi.at.ua.starbuzz.R;
 
@@ -48,11 +49,12 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
           if (cursor.moveToFirst()) {
               String nameText = cursor.getString(0);
               String descriptionText = cursor.getString(1);
-              int photoText = cursor.getInt(2);
+              int image = cursor.getInt(2);
 
               name.setText(nameText);
               description.setText(descriptionText);
-            //  photo.setImageResource(photoText);
+
+              photo.setImageResource(image);
 
               photo.setContentDescription(nameText);
               cursor.close();

@@ -5,8 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
 
 import griffits.fvi.at.ua.starbuzz.R;
 
@@ -25,7 +30,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CREATE_TABMENU = "CREATE TABLE TABMENU (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "NAME TEXT, "
             + "DESCRIPTION TEXT, "
-            + "IMAGE_RESOURCE_ID INTEGER, "
+            + "IMAGE_RESOURCE_ID BLOG, "
             + "CATEGORY TEXT);";
 
 
@@ -71,11 +76,11 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
         db.insert("TABMENU", null, drinkValues);
     }
 
-    public void insertMenu(String name, String description, int resourceId, String category) {
+    public void insertMenu(String name, String description, byte [] imageByte, String category) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
         contentValues.put("DESCRIPTION", description);
-        contentValues.put("IMAGE_RESOURCE_ID", resourceId);
+        contentValues.put("IMAGE_RESOURCE_ID", imageByte);
         contentValues.put("CATEGORY", category);
         this.getWritableDatabase().insertOrThrow("TABMENU", null, contentValues);
     }
@@ -87,11 +92,14 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     public void update(String oldName, String newName){
         this.getWritableDatabase().execSQL("UPDATE TABMENU SET NAME='" + newName +"' WHERE NAME='" + oldName+"'",  null);
     }
+
     public void list_all_table(TextView screen){
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM TABMENU", null);
         screen.setText(" ");
         while (cursor.moveToNext()){
-            screen.append(cursor.getString(1)+ " " +cursor.getString(3)+"\n");
+            screen.append(cursor.getString(1)+ " " +cursor.getString(4)+"\n");
         }
     }
+
+
 }

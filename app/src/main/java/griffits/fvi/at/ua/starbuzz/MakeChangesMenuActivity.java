@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,11 +22,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+
 public class MakeChangesMenuActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String LOG_INFO = "mylog";
 
     private static final int PICK_NAME = 100;
-    Uri imageUri;
+    public   Uri imageUri;
 
     private EditText et_name, et_description, et_category;
     private Button btn_add_data_table, btn_delete_data_table, btn_clean_data_table, btn_show_data_table, btn_load_image ;
@@ -31,7 +36,7 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
     private ImageView image_load;
 
     String name, description, category;
-    int resourceId;
+
 
     SQLiteDatabase sqLiteDatabase;
 
@@ -54,12 +59,20 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
 
 
 
-    public void getViewToString(){
-        category = et_category.getText().toString();
-        name = et_name.getText().toString();
-        resourceId = image_load.getId();
-        description = et_description.getText().toString();
+    public void getViewToStringTrim(){
+        category = et_category.getText().toString().trim();
+        name = et_name.getText().toString().trim();
+        description = et_description.getText().toString().trim();
+        imageViewToByte(image_load);
 
+    }
+
+    private byte[] imageViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 
     public void init(){
@@ -79,11 +92,12 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-       getViewToString();
+       getViewToStringTrim();
+
         switch (v.getId()){
             case R.id.btn_add_datatable:
                 try{
-                    starbuzzDatabaseHelper.insertMenu(name, description, resourceId, category);
+                    starbuzzDatabaseHelper.insertMenu(name, description, imageViewToByte(image_load), category);
 
                 } catch (SQLiteException e){
                     Toast.makeText(this,"MakeChangesMenuActivity error database", Toast.LENGTH_SHORT).show();
@@ -112,9 +126,9 @@ public class MakeChangesMenuActivity extends AppCompatActivity implements View.O
     }
 
     private void cleanView() {
-            et_category.setText(" ");
-            et_name.setText(" ");
-            et_description.setText(" ");
+            et_category.setText("");
+            et_name.setText("");
+            et_description.setText("");
     }
 
     private void openGallery(){
