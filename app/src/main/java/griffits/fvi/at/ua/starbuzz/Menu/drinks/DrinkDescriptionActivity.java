@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
      private TextView name, description;
      private ImageView photo;
+     private CheckBox isFavorite;
 
 
 
@@ -41,7 +43,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
             SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
 
             Cursor cursor = db.query ("TABMENU",
-                    new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID", "CATEGORY"},
+                    new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID", "CATEGORY", "FAVORITE"},
                     "_id = ?",
                     new String[] {Integer.toString(drinkNo)},
                     null, null,null);
@@ -50,6 +52,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
               String nameText = cursor.getString(0);
               String descriptionText = cursor.getString(1);
               int image = cursor.getInt(2);
+              boolean isFavorite = cursor.getInt(3) == 1;
 
               name.setText(nameText);
               description.setText(descriptionText);
@@ -70,6 +73,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
        photo = (ImageView)findViewById(R.id.photo);
        name = (TextView)findViewById(R.id.name);
        description = (TextView)findViewById(R.id.description);
+        isFavorite = (CheckBox)findViewById(R.id.favorite);
     }
 
     @Override
