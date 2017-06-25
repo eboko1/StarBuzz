@@ -1,9 +1,11 @@
 package griffits.fvi.at.ua.starbuzz.Menu.drinks;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +26,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
      private TextView name, description;
      private ImageView photo;
-     private CheckBox isFavorite;
+     private CheckBox favorite;
 
 
 
@@ -37,6 +39,8 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
 
         int  drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINK_NUMBER);
         Log.i(LOG_INFO, " DrinkDescriptionActivity  drink number click Category ListActivity" + EXTRA_DRINK_NUMBER);
+
+
 
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
@@ -52,14 +56,14 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
               String nameText = cursor.getString(0);
               String descriptionText = cursor.getString(1);
               int image = cursor.getInt(2);
-              boolean isFavorite = cursor.getInt(3) == 1;
+              boolean isFavorite = (cursor.getInt(3) == 1);
 
               name.setText(nameText);
               description.setText(descriptionText);
-
               photo.setImageResource(image);
-
               photo.setContentDescription(nameText);
+              favorite.setChecked(isFavorite);
+
               cursor.close();
               db.close();
           }
@@ -73,7 +77,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
        photo = (ImageView)findViewById(R.id.photo);
        name = (TextView)findViewById(R.id.name);
        description = (TextView)findViewById(R.id.description);
-        isFavorite = (CheckBox)findViewById(R.id.favorite);
+       favorite = (CheckBox)findViewById(R.id.favorite);
     }
 
     @Override
@@ -81,4 +85,21 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
         super.onDestroy();
 
     }
+
+    public void onClickFavorite(){
+        int drinkNumber = (Integer)getIntent().getExtras().get("drinkNumber");
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("FAVORITE", favorite.isChecked());
+
+        SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
+        try {
+            SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
+            db.update("TABMENU", contentValues, "_id = ?", new String[]{Integer.toString(drinkNumber)});
+            db.close();
+        } catch (SQLiteException e){
+        } catch (SQLException e){
+            Toast.makeText(getApplicationContext(), "DrinkDescriptionActivity onClickFavorite()  Database unavailable ", Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
