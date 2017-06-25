@@ -98,7 +98,7 @@ public class DrinkDescriptionActivity extends AppCompatActivity {
             db.close();
         } catch (SQLiteException e){
         } catch (SQLException e){
-            Toast.makeText(getApplicationContext(), "DrinkDescriptionActivity onClickFavorite()  Database unavailable ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "DrinkDescriptionActivity onClickFavorite() Database unavailable ", Toast.LENGTH_LONG).show();
         }
     }
 

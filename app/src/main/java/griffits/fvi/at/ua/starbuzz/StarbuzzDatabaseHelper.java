@@ -31,7 +31,8 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
             + "NAME TEXT, "
             + "DESCRIPTION TEXT, "
             + "IMAGE_RESOURCE_ID BLOG, "
-            + "CATEGORY TEXT);";
+            + "CATEGORY TEXT, "
+            + "FAVORITE INTEGER);";
 
 
      public StarbuzzDatabaseHelper(Context context){
